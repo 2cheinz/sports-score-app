@@ -1,2 +1,4 @@
 # sports-score-app
-Main project for CS 361
+Casey Heinz
+CS 361 - Term Project
+Sports Score Tracker Application using Microservices
