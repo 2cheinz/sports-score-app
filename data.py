@@ -15,4 +15,4 @@ NFC_TEAMS = [
 ]
 
 # favorite list that will adjust accordingly to actions taken by the user
-favorites = []
+user_favorites = []
