@@ -1,7 +1,9 @@
 # main file for running
 
 def display_main_menu():
-    print("\nWelcome to the Sports Team Tracker")
+    print("\nWelcome to the Sports Team Tracker!")
+    print("\nThis is the place to be to track all of your favorite teams and have the information about them all in one place!")
+    print("\nWhat would you like to do?\n")
     print("1. Search for Teams")
     print("2. View Favorite Teams")
     print("3. Exit Program")
@@ -9,7 +11,7 @@ def display_main_menu():
 def main():
     while True:
         display_main_menu()
-        choice = input("Enter your choice (1-3): ")
+        choice = input("\nEnter your choice (1-3): ")
 
         if choice == "1":
             search_teams_menu()
