@@ -5,20 +5,54 @@ from data import AFC_TEAMS, NFC_TEAMS, user_favorites
 # initial search for teams menu, view by conference or view all teams
 def search_teams_menu():
     while True:
-            print("\nSEARCH FOR TEAMS")
-            print("\n- How would you like to search for teams to follow?")
-            print("-------------------------------------------------------")
-            print("1. View Teams by Conference (AFC/NFC)")
-            print("2. View All Teams")
-            print("3. Back to Main Menu")
+        print("\nSEARCH FOR TEAMS")
+        print("\n- How would you like to search for teams to follow?")
+        print("-------------------------------------------------------")
+        print("1. View Teams by Conference (AFC/NFC)")
+        print("2. View All Teams")
+        print("3. Back to Main Menu")
 
-            user_choice = input("Enter your choice (1-3): ")
+        user_choice = input("Enter your choice (1-3): ")
 
-            if user_choice == "1":
-                  show_teams_by_conference()
-            elif user_choice == "2":
-                  show_all_teams()
-            elif user_choice == "3":
-                  return
-            else:
-                  print("Invalide Input! Please enter a number between 1-3")
+        if user_choice == "1":
+                show_teams_by_conference()
+        elif user_choice == "2":
+                show_all_teams()
+        elif user_choice == "3":
+                return
+        else:
+                print("Invalide Input! Please enter a number between 1-3")
+
+# search option for viewing teams by conference
+def show_teams_by_conference():
+    while True:
+        print("\nVIEW TEAMS BY CONFERENCE")
+        print("\n- Select a conference, AFC or NFC to view teams from the selected conference")
+        print("--------------------------------------\n")
+        print("1. AFC")
+        print("2. NFC")
+        print("3. Back to Search Menu")
+
+        conference_choice = input("Enter your choice (1-3): ")
+
+        if conference_choice == "1":
+            print("\nAFC TEAMS\n")
+            for team in AFC_TEAMS:
+                    print(f"- {team}")
+            decision = input("\nType the team name EXACTLY as is to follow them. Press 3 to return to the conference menu: ")
+            if decision == "3":
+                search_teams_menu()
+        elif conference_choice == "2":
+            print("\nNFC TEAMS\n")
+            for team in NFC_TEAMS:
+                    print(f"- {team}")
+            decision = input("\nType the team name EXACTLY as is to follow them. Press 3 to return to the conference menu: ")
+            if decision == "3":
+                search_teams_menu()
+        elif conference_choice == "3":
+            search_teams_menu()
+        else:
+            print("Invalid Selection. Try Again")
+        
+
+
