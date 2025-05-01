@@ -88,17 +88,52 @@ def add_to_favorites(team_name):
         print(f"{team_name} has been added to your favorite teams list!")
 
 def view_favorites():
-    print("\nYOUR FAVORITE TEAMS")
-    print("---------------------------\n")
+    while True:
+        print("\nYOUR FAVORITE TEAMS")
+        print("---------------------------\n")
 
-    if not user_favorites:
-        print("You have not followed any teams yet.")
-    else:
+        if not user_favorites:
+            print("You have not followed any teams yet.")
+            input("\nPress Enter to return to the main menu: ")
+            return
+
         for team in user_favorites:
             print(f"- {team}")
 
-    input("\nPress Enter to return to the main menu: ")
+        print("\nOptions:")
+        print("1. View team info (COMING IN A LATER SPRING - MICROSERVICE)")
+        print("2. Unfollow a team")
+        print("3. Back to Main Menu")
 
+        choice = input("\nEnter your choice (1-3): ")
 
+        if choice == "1":
+            team_name = input("Enter the FULL name of the team you want to view more info for: ")
+            if team_name in user_favorites:
+                print(f"\nStadium Info for {team_name}:")
+                print("Stadium: Placeholder Stadium")
+                print("Location: Placeholder City, State")
+                print("Capacity: 65,000 (estimated)")
+                print("\n(Note: Actual stadium data will be added in a future update.)")
+            else:
+                print("The team you selected is not in your favorites, try again!")
+            input("\nPress Enter to return to the main menu")
+        elif choice == "2":
+            team_name = input("Enter the FULL name of the team to unfollow: ")
+            if team_name in user_favorites:
+                confirm = input(f"Are you sure you want to unfollow {team_name}? (yes/no): ")
+                if confirm == "yes":
+                    user_favorites.remove(team_name)
+                    print(f"{team_name} has been removed from your favorites.")
+                else:
+                    print("Canceled.")
+            else:
+                print("That team is not in your favorites.")
+            input("\nPress 'Enter' to return to the 'Favorites' menu: ")
+        elif choice == "3":
+            return
+        else:
+            print("Invalid Selection. Try Again (select 1-3).")
+            
 
             
