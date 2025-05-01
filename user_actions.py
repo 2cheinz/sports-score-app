@@ -33,26 +33,59 @@ def show_teams_by_conference():
         print("2. NFC")
         print("3. Back to Search Menu")
 
-        conference_choice = input("Enter your choice (1-3): ")
+        conference_choice = input("\nEnter your choice (1-3): ")
 
         if conference_choice == "1":
             print("\nAFC TEAMS\n")
             for team in AFC_TEAMS:
                     print(f"- {team}")
             decision = input("\nType the team name EXACTLY as is to follow them. Press 3 to return to the conference menu: ")
-            if decision == "3":
+            if decision in AFC_TEAMS:
+                 add_to_favorites(decision)
+            elif decision == "3":
                 search_teams_menu()
+            else:
+                 print("Invalid Selection. Try Again!")
         elif conference_choice == "2":
             print("\nNFC TEAMS\n")
             for team in NFC_TEAMS:
                     print(f"- {team}")
             decision = input("\nType the team name EXACTLY as is to follow them. Press 3 to return to the conference menu: ")
-            if decision == "3":
+            if decision in NFC_TEAMS:
+                 add_to_favorites(decision)
+            elif decision == "3":
                 search_teams_menu()
+            else:
+                 print("Invalid Selection. Try Again!")
         elif conference_choice == "3":
-            search_teams_menu()
+            return
         else:
             print("Invalid Selection. Try Again")
         
+def show_all_teams():
+    while True:
+        print("\nViewing All NFL Teams")
+        print("\n-------------------------------\n")
+        ALL_TEAMS = AFC_TEAMS + NFC_TEAMS
+        for team in ALL_TEAMS:
+            print(f"- {team}")
+        
+        decision = input("\nType the team name EXACTLY as is to follow them. Press 3 to return to the conference menu: ")
+        
+        if decision in ALL_TEAMS:
+            add_to_favorites(decision)
+        elif decision == "3":
+            return
+        else:
+            print("\nInvalid Selection. Try Again!")
+        
+
+def add_to_favorites(team_name):
+    if team_name in user_favorites:
+        print(f"{team_name} is already in your favorite teams list!")
+    else:
+        user_favorites.append(team_name)
+        print(f"{team_name} has been added to your favorite teams list!")
 
 
+            
