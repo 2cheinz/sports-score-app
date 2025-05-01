@@ -1,6 +1,6 @@
 # main file for running
 
-from user_actions import search_teams_menu
+from user_actions import search_teams_menu, view_favorites
 
 def display_main_menu():
     print("\nWelcome to the Sports Team Tracker!")

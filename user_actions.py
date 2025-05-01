@@ -87,5 +87,18 @@ def add_to_favorites(team_name):
         user_favorites.append(team_name)
         print(f"{team_name} has been added to your favorite teams list!")
 
+def view_favorites():
+    print("\nYOUR FAVORITE TEAMS")
+    print("---------------------------\n")
+
+    if not user_favorites:
+        print("You have not followed any teams yet.")
+    else:
+        for team in user_favorites:
+            print(f"- {team}")
+
+    input("\nPress Enter to return to the main menu: ")
+
+
 
             
