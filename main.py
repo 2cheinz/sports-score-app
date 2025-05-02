@@ -3,8 +3,8 @@
 from user_actions import search_teams_menu, view_favorites
 
 def display_main_menu():
-    print("\nWelcome to the Sports Team Tracker!")
-    print("\nThis is the place to be to track all of your favorite teams and have the information about them all in one place!")
+    print("\nWelcome to the NFL Team Tracker!")
+    print("\nThis is an application to follow all your favorite NFL teams and stay updated on their team information including stadium information, historical results, and statistics - all in one easily accessible app!")
     print("\nWhat would you like to do?\n")
     print("1. Search for Teams")
     print("2. View Favorite Teams")

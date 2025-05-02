@@ -86,6 +86,8 @@ def add_to_favorites(team_name):
     else:
         user_favorites.append(team_name)
         print(f"{team_name} has been added to your favorite teams list!")
+    input("\nPress 'Enter' to return to the view all teams menu: ")
+
 
 def view_favorites():
     while True:
@@ -101,7 +103,7 @@ def view_favorites():
             print(f"- {team}")
 
         print("\nOptions:")
-        print("1. View team info (COMING IN A LATER SPRING - MICROSERVICE)")
+        print("1. View team info (COMING IN A LATER SPRINT - MICROSERVICE)")
         print("2. Unfollow a team")
         print("3. Back to Main Menu")
 
@@ -121,6 +123,7 @@ def view_favorites():
         elif choice == "2":
             team_name = input("Enter the FULL name of the team to unfollow: ")
             if team_name in user_favorites:
+                print(f"\nYou've selected to unfollow {team_name}. You will no longer be able to receive updates or be able to view them in your favorites list.\n")
                 confirm = input(f"Are you sure you want to unfollow {team_name}? (yes/no): ")
                 if confirm == "yes":
                     user_favorites.remove(team_name)
