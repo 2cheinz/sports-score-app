@@ -2,6 +2,8 @@
 
 from data import AFC_TEAMS, NFC_TEAMS, user_favorites
 
+import requests
+
 # initial search for teams menu, view by conference or view all teams
 def search_teams_menu():
     while True:
@@ -112,11 +114,10 @@ def view_favorites():
         if choice == "1":
             team_name = input("Enter the FULL name of the team you want to view more info for: ")
             if team_name in user_favorites:
+                stadium_info = get_stadium_info(team_name)
                 print(f"\nStadium Info for {team_name}:")
-                print("Stadium: Placeholder Stadium")
-                print("Location: Placeholder City, State")
-                print("Capacity: 65,000 (estimated)")
-                print("\n(Note: Actual stadium data will be added in a future update.)")
+                print(f"Stadium: {stadium_info.get('name', 'no stadium found')}")
+                print(f"Location: {stadium_info.get('location','no stadium found')}")
             else:
                 print("The team you selected is not in your favorites, try again!")
             input("\nPress Enter to return to the main menu")
@@ -137,6 +138,18 @@ def view_favorites():
             return
         else:
             print("Invalid Selection. Try Again (select 1-3).")
+
+def get_stadium_info(team_name):
+    try:
+        response = requests.post(
+            "http://localhost:5002/stadium",
+            json={"team": team_name}
+        )
+        return response.json()
+    except Exception:
+        return {"error": f"Microservice request failed, try again"}
+    
+
             
 
             
