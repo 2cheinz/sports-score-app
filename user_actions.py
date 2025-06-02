@@ -105,7 +105,7 @@ def view_favorites():
             print(f"- {team}")
 
         print("\nOptions:")
-        print("1. View team info (COMING IN A LATER SPRINT - MICROSERVICE)")
+        print("1. View team info")
         print("2. Unfollow a team")
         print("3. Back to Main Menu")
 
