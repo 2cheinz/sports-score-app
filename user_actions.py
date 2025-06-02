@@ -118,6 +118,16 @@ def view_favorites():
                 print(f"\nStadium Info for {team_name}:")
                 print(f"Stadium: {stadium_info.get('name', 'no stadium found')}")
                 print(f"Location: {stadium_info.get('location','no stadium found')}")
+
+                championship_info = get_championship_info(team_name)
+                print(f"\nChampionship History for {team_name}:")
+                print(f"Super Bowls: {championship_info.get('super_bowls')}")
+                print(f"Last Super Bowl Win: {championship_info.get('last_win')}")
+
+                roster_info = get_player_roster(team_name)
+                print("\nKey Players:")
+                for player in roster_info.get("roster", []):
+                    print(f"- {player}")
             else:
                 print("The team you selected is not in your favorites, try again!")
             input("\nPress Enter to return to the main menu")
@@ -147,9 +157,29 @@ def get_stadium_info(team_name):
         )
         return response.json()
     except Exception:
-        return {"error": f"Microservice request failed, try again"}
+        return {"error: Microservice request failed, try again"}
     
+def get_championship_info(team_name):
+    try:
+        response = requests.post(
+            "http://localhost:5003/history",
+            json={"team": team_name}
+        )
+        return response.json()
+    except Exception:
+        return {"error: Microservice request failed, try again"}
 
-            
+def get_player_roster(team_name):
+     try:
+          response = requests.post(
+               "http://localhost:5004/roster",
+               json={"team": team_name}
+          )
+          return response.json()
+     except Exception:
+          return {"error: Microservice request failed, try again"}
 
-            
+
+        
+
+        
